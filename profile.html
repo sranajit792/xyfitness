@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Profile — XY.FITNESS</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  
+  <style>
+    /* Two column grid layout for profile adjustments */
+    .profile-form-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1.2fr;
+      gap: 2rem;
+    }
+    
+    @media (max-width: 968px) {
+      .profile-form-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient waving background -->
+  <div class="ambient-flag-bg"></div>
+  <div class="ambient-particles"></div>
+
+  <div class="app-container">
+    
+    <!-- DESKTOP SIDEBAR NAVIGATION -->
+    <nav class="desktop-nav">
+      <div class="brand-logo">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon">
+        <span>XY.FITNESS</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+            Dashboard
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-footer">
+        <button class="btn-logout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- MOBILE TOP BAR -->
+    <header class="mobile-top-bar">
+      <div class="brand-logo">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon">
+        <span>XY.FITNESS</span>
+      </div>
+      <div class="user-avatar" style="width: 32px; height: 32px; font-size: 0.75rem;">-</div>
+    </header>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-nav">
+      <a href="dashboard.html" class="mobile-nav-item active" style="width: 100%; justify-content: center;">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+        <span>Home</span>
+      </a>
+    </nav>
+
+    <!-- MAIN APP CONTENT -->
+    <main class="main-content" style="padding-top: 1rem;">
+      <div class="container-wide">
+        
+        <!-- Mockup styled Floating Header bar -->
+        <div class="app-header-capsule">
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <img src="logo-icon.png" alt="XY.FITNESS Icon" style="height:28px;">
+            <div style="display:flex; flex-direction:column; line-height:1.2;">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="font-weight:800; font-size:1.1rem; color:#fff; letter-spacing:0.02em;">XY.FITNESS</span>
+                <span class="badge-vande-mataram">🇮🇳 JAI HIND • VANDE MATARAM</span>
+              </div>
+              <span style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Personal Fitness Planner</span>
+            </div>
+          </div>
+          
+          <div style="display:flex; gap:0.75rem;">
+            <button class="btn btn-logout btn-sm" style="font-size:0.75rem;">Sign Out</button>
+          </div>
+        </div>
+        
+        <!-- Header -->
+        <header style="margin-bottom: 2rem;">
+          <h1 style="font-size: 2.25rem;">Customize Profile</h1>
+          <p style="color: var(--text-secondary); margin-top: 0.25rem;">Adjust parameters to recalculate your fitness and diet recommendations.</p>
+        </header>
+
+        <form id="profile-edit-form" class="profile-form-grid">
+          
+          <!-- Left Column (Core Parameters) -->
+          <div class="meals-column">
+            <div class="glass-card glow-saffron">
+              <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;">Biometrics & Baseline</h2>
+              
+              <div class="form-group">
+                <label class="form-label" for="prof-name">Full Name</label>
+                <input type="text" id="prof-name" class="form-control" required>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="prof-age">Age</label>
+                  <input type="number" id="prof-age" class="form-control" min="13" max="100" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="prof-gender">Gender</label>
+                  <select id="prof-gender" class="form-control">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                  </select>
+                </div>
+              </div>
+
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                  <label class="form-label" for="prof-height">Height (in cm)</label>
+                  <input type="number" id="prof-height" class="form-control" min="90" max="250" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="prof-weight">Weight (in kg)</label>
+                  <input type="number" id="prof-weight" class="form-control" min="30" max="300" step="0.1" required>
+                </div>
+              </div>
+            </div>
+
+            <div class="glass-card glow-green">
+              <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;">Preferences & Equipment</h2>
+              
+              <div class="form-group">
+                <label class="form-label" for="prof-pref">Training Location</label>
+                <select id="prof-pref" class="form-control">
+                  <option value="Gym">Fully Equipped Gym</option>
+                  <option value="Home">Train at Home</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Available Equipment (For Home Workouts):</label>
+                <div class="checkbox-grid" id="profile-equipment-grid">
+                  <!-- Injected dynamically -->
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column (Goals, Diet, Save button) -->
+          <div class="water-column">
+            
+            <div class="glass-card">
+              <h2 style="font-size: 1.25rem; margin-bottom: 1.5rem;">Fitness Strategy</h2>
+              
+              <div class="form-group">
+                <label class="form-label" for="prof-goal">Primary Goal</label>
+                <select id="prof-goal" class="form-control">
+                  <option value="Weight Loss">Weight Loss 📉</option>
+                  <option value="Muscle Gain">Muscle Gain 💪</option>
+                  <option value="Maintain Weight">Maintain Weight ⚖️</option>
+                  <option value="Improve Fitness">Improve General Fitness ⚡</option>
+                  <option value="Build Strength">Build Strength 🏋️</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="prof-diet">Culinary Style</label>
+                <select id="prof-diet" class="form-control">
+                  <option value="Vegetarian">🟢 Vegetarian</option>
+                  <option value="Non-Vegetarian">🔴 Non-Vegetarian</option>
+                </select>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-full" style="margin-top: 1rem;">Save Preferences</button>
+            </div>
+
+            <!-- Warning advice block -->
+            <div class="glass-card">
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--white);">Important Notice</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); line-height: 1.4;">
+                Modifying your height, weight, or fitness preferences will immediately recalculate your BMI and rewrite your weekly routine split recommendations.
+              </p>
+            </div>
+
+          </div>
+
+        </form>
+
+        <!-- Footer -->
+        <footer class="footer-disclaimer">
+          <p>XY.FITNESS provides general fitness and nutrition information for educational purposes. It is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Support</a>
+          </div>
+          <p>&copy; 2026 XY.FITNESS. All rights reserved.</p>
+        </footer>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Central Config scripts -->
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/toast.js"></script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/workout-logic.js"></script>
+  <script type="module" src="js/diet-logic.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

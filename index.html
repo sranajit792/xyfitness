@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>XY.FITNESS — AI-Powered Personalized Fitness Platform</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  
+  <style>
+    /* Page specific adjustments */
+    .landing-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 6rem 1.5rem;
+    }
+    
+    .hero-image-card {
+      position: relative;
+      border-radius: var(--border-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-premium), 0 0 40px rgba(0, 0, 0, 0.5);
+      border: 1px solid var(--glass-border);
+      height: 480px;
+      background-image: url('gym-hero.png');
+      background-size: cover;
+      background-position: center;
+    }
+
+    .hero-image-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(11, 15, 20, 0.9) 10%, rgba(11, 15, 20, 0.1));
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 2.5rem;
+    }
+
+    .header-nav {
+      max-width: 1200px;
+      margin: 0 auto;
+      height: 80px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1.5rem;
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    @media (max-width: 968px) {
+      .landing-grid {
+        grid-template-columns: 1fr;
+        padding-top: 3rem;
+      }
+      .hero-image-card {
+        height: 300px;
+      }
+      .landing-title {
+        font-size: 3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient waving background -->
+  <div class="ambient-flag-bg"></div>
+  <div class="ambient-particles"></div>
+
+  <!-- Header Nav -->
+  <header style="background: rgba(11, 15, 20, 0.7); backdrop-filter: blur(10px); position: sticky; top: 0; z-index: 1000;">
+    <div class="header-nav">
+      <div class="brand-logo" style="margin-bottom: 0;">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon" style="height: 36px;">
+        <span>XY.FITNESS</span>
+      </div>
+      <div style="display: flex; gap: 1rem; align-items: center;">
+        <a href="login.html" class="btn btn-secondary btn-sm" style="padding: 0.6rem 1.2rem;">Sign In</a>
+        <a href="signup.html" class="btn btn-primary btn-sm" style="padding: 0.6rem 1.2rem;">Get Started</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Centered Layout -->
+  <main class="landing-grid" style="display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; max-width: 820px; margin: 0 auto; padding: 6rem 1.5rem;">
+    <div class="glass-card" style="text-align: center; display: flex; flex-direction: column; align-items: center; padding: 3.5rem 2.5rem; background: rgba(11, 15, 20, 0.82); backdrop-filter: blur(15px); border: 1px solid var(--glass-border); width: 100%; border-radius: var(--border-radius-lg); box-shadow: var(--shadow-premium);">
+      <div class="landing-badge" style="margin-bottom: 1.5rem;">
+        <span>🇮🇳 Designed for Indian Fitness Enthusiasts</span>
+      </div>
+      <h1 class="landing-title" style="text-align: center;">
+        Your Fitness.<br>
+        <span class="saffron-gradient">Your Plan.</span><br>
+        <span class="green-gradient">Your Journey.</span>
+      </h1>
+      <p class="landing-subtitle" style="text-align: center; max-width: 650px; margin-top: 0.5rem; margin-bottom: 2.25rem; line-height: 1.6; color: var(--text-secondary);">
+        XY.FITNESS creates premium, personalized workout and Indian-friendly nutrition plans based on your body metrics, specific targets, and lifestyle. No cookie-cutter programs, just results.
+      </p>
+      <div class="landing-actions" style="justify-content: center; gap: 1.25rem; margin-bottom: 0;">
+        <a href="signup.html" class="btn btn-primary" style="padding: 0.85rem 2.5rem;">Start Your Journey →</a>
+        <a href="login.html" class="btn btn-secondary" style="padding: 0.85rem 2.5rem;">Member Login</a>
+      </div>
+    </div>
+  </main>
+
+  <!-- Features Section -->
+  <section class="container-wide features-section" style="border-top: 1px solid var(--glass-border);">
+    <h2 style="text-align: center; font-size: 2.25rem; margin-bottom: 3rem; text-shadow: 0 4px 12px rgba(11, 15, 20, 0.95), 0 2px 4px rgba(11, 15, 20, 0.99);">Engineered Around Your Preferences</h2>
+    
+    <div class="features-grid">
+      <!-- Feature 1 -->
+      <div class="glass-card feature-card">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+          </svg>
+        </div>
+        <h3 class="feature-title">Personalized Fitness</h3>
+        <p class="feature-desc">Routines built around you. Workouts dynamically adapt based on your experience, goals, and metric limits.</p>
+      </div>
+
+      <!-- Feature 2 -->
+      <div class="glass-card feature-card">
+        <div class="feature-icon-wrapper icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+          </svg>
+        </div>
+        <h3 class="feature-title">Smart BMI Tracking</h3>
+        <p class="feature-desc">Understand your progress. Recalculate your body metrics and automatically adapt recommendations instantly.</p>
+      </div>
+
+      <!-- Feature 3 -->
+      <div class="glass-card feature-card">
+        <div class="feature-icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+          </svg>
+        </div>
+        <h3 class="feature-title">Home or Gym</h3>
+        <p class="feature-desc">Train wherever you are. Whether you have zero equipment at home or full machines at the gym.</p>
+      </div>
+
+      <!-- Feature 4 -->
+      <div class="glass-card feature-card">
+        <div class="feature-icon-wrapper icon-green">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m0-12.728l.707.707m12.728 12.728l.707-.707M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+          </svg>
+        </div>
+        <h3 class="feature-title">Indian-Friendly Nutrition</h3>
+        <p class="feature-desc">Practical meals designed around your preference. Balanced recipes featuring paneer, dal, eggs, fish, and chicken.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="container-wide">
+    <div class="footer-disclaimer">
+      <p>XY.FITNESS provides general fitness and nutrition information for educational purposes. It is not a substitute for professional medical, fitness, or nutritional advice.</p>
+      <div class="footer-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Contact Support</a>
+      </div>
+      <p style="margin-top: 0.5rem;">&copy; 2026 XY.FITNESS. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <!-- Firebase configuration dynamically checked -->
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/auth.js"></script>
+</body>
+</html>

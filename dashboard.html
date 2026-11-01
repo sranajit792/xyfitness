@@ -1,0 +1,368 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard — XY.FITNESS</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  
+  <style>
+    /* Mockup-specific capsule header */
+    .app-header-capsule {
+      background: rgba(17, 24, 39, 0.85);
+      border: 1px solid var(--glass-border);
+      border-radius: 40px;
+      padding: 0.6rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2rem;
+      margin-top: 1rem;
+    }
+
+    .badge-vande-mataram {
+      background: rgba(255, 153, 51, 0.1);
+      border: 1px solid rgba(255, 153, 51, 0.3);
+      color: var(--saffron);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      letter-spacing: 0.05em;
+    }
+
+    /* Summary Layout Grid Box */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: 1rem;
+    }
+
+    .summary-item {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+    }
+
+    .summary-label {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .summary-value {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+    }
+
+    /* Youth notice banner */
+    .youth-alert-banner {
+      background: rgba(0, 119, 255, 0.08);
+      border: 1px solid rgba(0, 119, 255, 0.25);
+      border-radius: var(--border-radius-md);
+      padding: 1.25rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+      margin-top: 1.5rem;
+    }
+
+    /* Circular BMI dial SVG */
+    .bmi-circular-container {
+      position: relative;
+      width: 120px;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .bmi-circular-text {
+      position: absolute;
+      text-align: center;
+    }
+
+    /* Linear Slider classification bar */
+    .bmi-classification-bar {
+      display: flex;
+      gap: 0.25rem;
+      height: 6px;
+      border-radius: 3px;
+      overflow: hidden;
+      margin: 1rem 0;
+      position: relative;
+    }
+    .bmi-class-segment {
+      flex: 1;
+      height: 100%;
+    }
+    .bmi-class-pointer {
+      position: absolute;
+      top: -4px;
+      width: 12px;
+      height: 14px;
+      background: #FFFFFF;
+      border: 2px solid #000;
+      border-radius: 3px;
+      transform: translateX(-50%);
+      transition: left 1.5s ease-in-out;
+    }
+
+    /* Nutrition macro rows */
+    .macro-bar-row {
+      display: flex;
+      flex-direction: column;
+      gap: 0.25rem;
+      margin-bottom: 1.25rem;
+    }
+    .macro-bar-header {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.85rem;
+      font-weight: 700;
+    }
+
+    /* General desktop grid */
+    .ref-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 968px) {
+      .summary-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .ref-grid {
+        grid-template-columns: 1fr;
+      }
+      .app-header-capsule {
+        border-radius: var(--border-radius-md);
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+        padding: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient waving background (tricolor horizontal stripes + chakra center) -->
+  <div class="ambient-flag-bg"></div>
+  <div class="ambient-particles"></div>
+
+  <div class="app-container">
+    
+    <!-- DESKTOP SIDEBAR NAVIGATION -->
+    <nav class="desktop-nav">
+      <div class="brand-logo">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon">
+        <span>XY.FITNESS</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+            Dashboard
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-footer">
+        <button class="btn-logout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- MOBILE TOP BAR -->
+    <header class="mobile-top-bar">
+      <div class="brand-logo">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon">
+        <span>XY.FITNESS</span>
+      </div>
+      <div class="user-avatar" style="width: 32px; height: 32px; font-size: 0.75rem;">-</div>
+    </header>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-nav">
+      <a href="dashboard.html" class="mobile-nav-item active" style="width: 100%; justify-content: center;">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+        <span>Home</span>
+      </a>
+    </nav>
+
+    <!-- MAIN APP CONTENT -->
+    <main class="main-content" style="padding-top: 1rem;">
+      <div class="container-wide">
+        
+        <!-- Mockup styled Floating Header bar -->
+        <div class="app-header-capsule">
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <img src="logo-icon.png" alt="XY.FITNESS Icon" style="height:28px;">
+            <div style="display:flex; flex-direction:column; line-height:1.2;">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="font-weight:800; font-size:1.1rem; color:#fff; letter-spacing:0.02em;">XY.FITNESS</span>
+                <span class="badge-vande-mataram">🇮🇳 JAI HIND • VANDE MATARAM</span>
+              </div>
+              <span style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Personal Fitness Planner</span>
+            </div>
+          </div>
+          
+          <div style="display:flex; gap:0.75rem;">
+            <button class="btn btn-logout btn-sm" style="font-size:0.75rem;">Sign Out</button>
+          </div>
+        </div>
+
+        <!-- Greeting Row -->
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h1 style="font-size: 2.5rem; font-weight: 800;">Hey, <span id="welcome-name">Athlete</span> 👋</h1>
+            <p id="welcome-quote" style="color: var(--text-secondary); font-size: 0.9rem; margin-top: 0.25rem;">Focus on progress over perfection. Keep showing up.</p>
+          </div>
+          <div style="display: flex; gap: 0.75rem; flex-wrap: wrap;">
+            <button class="btn btn-secondary btn-sm" id="btn-download-pdf" style="border-color:#00E5FF; color:#00E5FF; background:rgba(0,229,255,0.03); border-radius:30px;">📥 Download PDF Report</button>
+            <button class="btn btn-secondary btn-sm" id="btn-regen-plan" style="border-color:#00C853; color:#00E676; background:rgba(0,200,83,0.03); border-radius:30px;">🔄 Regenerate Plan</button>
+            <a href="profile.html" class="btn btn-secondary btn-sm" style="border-radius:30px; background:rgba(255,255,255,0.05);">📝 Edit Profile</a>
+          </div>
+        </div>
+
+        <!-- PROFILE SUMMARY GRID BOX -->
+        <div class="glass-card" style="margin-bottom: 2rem;">
+          <div style="display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--glass-border); padding-bottom:1rem; margin-bottom:1.25rem;">
+            <h2 style="font-size: 0.85rem; letter-spacing: 0.05em; text-transform: uppercase; color: #00E676; font-weight: 800;">🟢 YOUR XY.FITNESS PROFILE SUMMARY</h2>
+          </div>
+
+          <div class="summary-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap:0.75rem;">
+            <div class="summary-item" style="background:rgba(255,255,255,0.01); border:1px solid var(--glass-border); border-radius:var(--border-radius-sm); padding:0.75rem 1rem; display:flex; flex-direction:column; gap:0.15rem; text-align:left; transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,230,118,0.25)'; this.style.boxShadow='0 0 10px rgba(0,230,118,0.1)';" onmouseout="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';">
+              <span class="summary-label" style="font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.02em;">Athlete</span>
+              <span class="summary-value" id="sum-name" style="font-size:0.9rem; font-weight:800; color:#fff;">SUVAJIT</span>
+            </div>
+            <div class="summary-item" style="background:rgba(255,255,255,0.01); border:1px solid var(--glass-border); border-radius:var(--border-radius-sm); padding:0.75rem 1rem; display:flex; flex-direction:column; gap:0.15rem; text-align:left; transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,230,118,0.25)'; this.style.boxShadow='0 0 10px rgba(0,230,118,0.1)';" onmouseout="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';">
+              <span class="summary-label" style="font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.02em;">Age Group</span>
+              <span class="summary-value" id="sum-age-group" style="font-size:0.9rem; font-weight:800; color:#fff;">17 yrs</span>
+            </div>
+            <div class="summary-item" style="background:rgba(255,255,255,0.01); border:1px solid var(--glass-border); border-radius:var(--border-radius-sm); padding:0.75rem 1rem; display:flex; flex-direction:column; gap:0.15rem; text-align:left; transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,230,118,0.25)'; this.style.boxShadow='0 0 10px rgba(0,230,118,0.1)';" onmouseout="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';">
+              <span class="summary-label" style="font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.02em;">Primary Goal</span>
+              <span class="summary-value" id="sum-goal" style="font-size:0.9rem; font-weight:800; color:#fff;">Fat Loss</span>
+            </div>
+            <div class="summary-item" style="background:rgba(255,255,255,0.01); border:1px solid var(--glass-border); border-radius:var(--border-radius-sm); padding:0.75rem 1rem; display:flex; flex-direction:column; gap:0.15rem; text-align:left; transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,230,118,0.25)'; this.style.boxShadow='0 0 10px rgba(0,230,118,0.1)';" onmouseout="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';">
+              <span class="summary-label" style="font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.02em;">Location & Kit</span>
+              <span class="summary-value" id="sum-location" style="font-size:0.9rem; font-weight:800; color:#fff;">Home</span>
+            </div>
+            <div class="summary-item" style="background:rgba(255,255,255,0.01); border:1px solid var(--glass-border); border-radius:var(--border-radius-sm); padding:0.75rem 1rem; display:flex; flex-direction:column; gap:0.15rem; text-align:left; transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,230,118,0.25)'; this.style.boxShadow='0 0 10px rgba(0,230,118,0.1)';" onmouseout="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';">
+              <span class="summary-label" style="font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.02em;">Dietary Type</span>
+              <span class="summary-value" id="sum-diet" style="font-size:0.9rem; font-weight:800; color:#fff;">Eggetarian</span>
+            </div>
+            <div class="summary-item" style="background:rgba(255,255,255,0.01); border:1px solid var(--glass-border); border-radius:var(--border-radius-sm); padding:0.75rem 1rem; display:flex; flex-direction:column; gap:0.15rem; text-align:left; transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0,230,118,0.25)'; this.style.boxShadow='0 0 10px rgba(0,230,118,0.1)';" onmouseout="this.style.borderColor='var(--glass-border)'; this.style.boxShadow='none';">
+              <span class="summary-label" style="font-size:0.65rem; color:var(--text-muted); text-transform:uppercase; font-weight:700; letter-spacing:0.02em;">Experience</span>
+              <span class="summary-value" id="sum-experience" style="font-size:0.9rem; font-weight:800; color:#fff;">Intermediate</span>
+            </div>
+          </div>
+
+          <!-- Conditional Safety Notice Alert banner -->
+          <div id="youth-protocol-banner" class="youth-alert-banner" style="display:none;">
+            <div style="font-size: 1.5rem; line-height:1;">🛡️</div>
+            <div>
+              <h4 style="color:#0088FF; font-size:0.85rem; font-weight:800; text-transform:uppercase; letter-spacing:0.02em; margin-bottom:0.15rem;">Youth Health & Safety Protocol Active</h4>
+              <p style="font-size:0.75rem; color:#9CA3AF; line-height:1.45;">
+                Because you are under 18, XY.FITNESS generates nutrition and training focused strictly on natural growth, bone density, energy, athletic skill, and recovery. We never recommend crash deficits or extreme lifting.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLANS GRID -->
+        <div class="ref-grid" style="display: grid; grid-template-columns: 1.15fr 0.85fr; margin-top: 1.5rem; align-items: start;">
+          
+          <!-- COLUMN 1: Personalised Workout Plan -->
+          <div class="glass-card" style="display:flex; flex-direction:column; gap:1rem; padding: 1.5rem;">
+            <div style="border-bottom:1px solid var(--glass-border); padding-bottom:0.75rem; margin-bottom:0.25rem;">
+              <h2 style="font-size:0.8rem; letter-spacing:0.05em; text-transform:uppercase; color:#00E676; font-weight:800;">🏋️ PERSONALIZED WORKOUT PLAN</h2>
+              <h3 style="font-size:1.15rem; color:#fff; margin-top:0.15rem;">Weekly Routine Split</h3>
+            </div>
+            
+            <div id="dash-workout-plan-container" style="display:flex; flex-direction:column; gap:1.25rem;">
+              <!-- Workout days injected dynamically -->
+            </div>
+          </div>
+
+          <!-- COLUMN 2: Personalised Diet Plan -->
+          <div class="glass-card" style="display:flex; flex-direction:column; gap:1rem; padding: 1.5rem;">
+            <div style="border-bottom:1px solid var(--glass-border); padding-bottom:0.75rem; margin-bottom:0.25rem;">
+              <h2 style="font-size:0.8rem; letter-spacing:0.05em; text-transform:uppercase; color:#00E676; font-weight:800;">🥗 PERSONALIZED DIET PLAN</h2>
+              <h3 style="font-size:1.15rem; color:#fff; margin-top:0.15rem;">Indian Whole-Food Nutrition Schedule</h3>
+            </div>
+            
+            <!-- Interactive Target Metric Cards -->
+            <div style="display:grid; grid-template-columns: 1fr 1fr; gap:0.75rem; margin-bottom:0.5rem;">
+              
+              <!-- Calorie Gauge Card -->
+              <div style="background:rgba(255, 153, 51, 0.02); border:1px solid rgba(255, 153, 51, 0.12); border-radius:var(--border-radius-sm); padding:0.85rem; display:flex; flex-direction:column; gap:0.25rem; align-items:center; text-align:center; position:relative; overflow:hidden; transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(255, 153, 51, 0.3)'; this.style.boxShadow='0 0 12px rgba(255, 153, 51, 0.1)';" onmouseout="this.style.borderColor='rgba(255, 153, 51, 0.12)'; this.style.boxShadow='none';">
+                <div style="font-size:0.65rem; color:#FF9933; font-weight:800; text-transform:uppercase; letter-spacing:0.02em;">Energy Target</div>
+                <div id="diet-badge-calories" style="font-size:1.15rem; font-weight:800; color:#fff; margin-top:0.15rem;">...</div>
+                <div style="font-size:0.6rem; color:var(--text-muted); font-weight:700;">Caloric Budget</div>
+                <div style="position:absolute; bottom:-20px; right:-20px; width:50px; height:50px; background:#FF9933; filter:blur(25px); opacity:0.15; border-radius:50%;"></div>
+              </div>
+
+              <!-- Water Wave Card -->
+              <div style="background:rgba(0, 119, 255, 0.02); border:1px solid rgba(0, 119, 255, 0.12); border-radius:var(--border-radius-sm); padding:0.85rem; display:flex; flex-direction:column; gap:0.25rem; align-items:center; text-align:center; position:relative; overflow:hidden; transition:all 0.3s;" onmouseover="this.style.borderColor='rgba(0, 119, 255, 0.3)'; this.style.boxShadow='0 0 12px rgba(0, 119, 255, 0.1)';" onmouseout="this.style.borderColor='rgba(0, 119, 255, 0.12)'; this.style.boxShadow='none';">
+                <div style="font-size:0.65rem; color:#0077FF; font-weight:800; text-transform:uppercase; letter-spacing:0.02em;">Hydration Target</div>
+                <div id="diet-badge-water" style="font-size:1.15rem; font-weight:800; color:#fff; margin-top:0.15rem;">...</div>
+                <div style="font-size:0.6rem; color:var(--text-muted); font-weight:700;">Water Volume</div>
+                <div style="position:absolute; bottom:-20px; right:-20px; width:50px; height:50px; background:#0077FF; filter:blur(25px); opacity:0.15; border-radius:50%;"></div>
+              </div>
+
+            </div>
+
+            <div id="dash-meals-list" style="display:flex; flex-direction:column; gap:0.85rem;">
+              <!-- Diet meals injected dynamically -->
+            </div>
+            
+            <!-- Optional Supplements -->
+            <div style="border-top:1px solid var(--glass-border); padding-top:1rem; margin-top:0.5rem;">
+              <h4 style="font-size:0.85rem; color:#fff; font-weight:700; margin-bottom:0.5rem;">Optional Supplements</h4>
+              <ul id="diet-supplements-list" style="font-size:0.75rem; color:var(--text-secondary); padding-left:1rem; display:flex; flex-direction:column; gap:0.35rem; margin:0;">
+                <!-- Supplements injected dynamically -->
+              </ul>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-disclaimer">
+          <p>XY.FITNESS provides general fitness and nutrition information for educational purposes. It is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Support</a>
+          </div>
+          <p>&copy; 2026 XY.FITNESS. All rights reserved.</p>
+        </footer>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Central Config scripts -->
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/toast.js"></script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/onboarding.js"></script>
+  <script type="module" src="js/workout-logic.js"></script>
+  <script type="module" src="js/diet-logic.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

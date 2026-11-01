@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Workout Splits — XY.FITNESS</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  
+  <style>
+    /* Styling adjustments for tabs split */
+    .tabs-row-scrollable {
+      display: flex;
+      gap: 0.5rem;
+      overflow-x: auto;
+      padding-bottom: 0.5rem;
+      margin-bottom: 2rem;
+      scrollbar-width: none; /* Hide scrollbar for clean layout */
+    }
+    .tabs-row-scrollable::-webkit-scrollbar {
+      display: none;
+    }
+    .tabs-row-scrollable button {
+      flex-shrink: 0;
+      min-width: 70px;
+    }
+    .tabs-row-scrollable button.active {
+      background: rgba(255, 153, 51, 0.15);
+      color: var(--accent-saffron);
+      border: 1px solid rgba(255, 153, 51, 0.3);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient waving background -->
+  <div class="ambient-flag-bg"></div>
+  <div class="ambient-particles"></div>
+
+  <div class="app-container">
+    
+    <!-- DESKTOP SIDEBAR NAVIGATION -->
+    <nav class="desktop-nav">
+      <div class="brand-logo">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon">
+        <span>XY.FITNESS</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+            Dashboard
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-footer">
+        <button class="btn-logout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- MOBILE TOP BAR -->
+    <header class="mobile-top-bar">
+      <div class="brand-logo">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon">
+        <span>XY.FITNESS</span>
+      </div>
+      <div class="user-avatar" style="width: 32px; height: 32px; font-size: 0.75rem;">-</div>
+    </header>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-nav">
+      <a href="dashboard.html" class="mobile-nav-item active" style="width: 100%; justify-content: center;">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+        <span>Home</span>
+      </a>
+    </nav>
+
+    <!-- MAIN APP CONTENT -->
+    <main class="main-content" style="padding-top: 1rem;">
+      <div class="container-wide">
+        
+        <!-- Mockup styled Floating Header bar -->
+        <div class="app-header-capsule">
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <img src="logo-icon.png" alt="XY.FITNESS Icon" style="height:28px;">
+            <div style="display:flex; flex-direction:column; line-height:1.2;">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="font-weight:800; font-size:1.1rem; color:#fff; letter-spacing:0.02em;">XY.FITNESS</span>
+                <span class="badge-vande-mataram">🇮🇳 JAI HIND • VANDE MATARAM</span>
+              </div>
+              <span style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Personal Fitness Planner</span>
+            </div>
+          </div>
+          
+          <div style="display:flex; gap:0.75rem;">
+            <button class="btn btn-logout btn-sm" style="font-size:0.75rem;">Sign Out</button>
+          </div>
+        </div>
+        
+        <!-- Header -->
+        <header style="margin-bottom: 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+          <div>
+            <h1 style="font-size: 2.25rem;">Weekly Routine</h1>
+            <p style="color: var(--text-secondary); margin-top: 0.25rem;">Dynamically mapped from your body parameters.</p>
+          </div>
+          <button id="btn-launch-interactive" class="btn btn-primary" style="display: none;">
+            ⚡ Start Workout Mode
+          </button>
+        </header>
+
+        <!-- Scrollable weekdays selector tabs -->
+        <div class="tabs-row-scrollable" id="workout-days-tabs">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Target day split summary header -->
+        <h2 id="workout-split-title" style="font-size: 1.5rem; margin-bottom: 1.5rem; border-left: 4px solid var(--accent-saffron); padding-left: 0.75rem;">
+          Monday Split
+        </h2>
+
+        <!-- Exercises List Grid -->
+        <div id="workout-exercises-list">
+          <!-- Injected dynamically -->
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-disclaimer">
+          <p>XY.FITNESS provides general fitness and nutrition information for educational purposes. It is not a substitute for professional medical advice, diagnosis, or treatment.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Support</a>
+          </div>
+          <p>&copy; 2026 XY.FITNESS. All rights reserved.</p>
+        </footer>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Central Config scripts -->
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/toast.js"></script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/workout-logic.js"></script>
+  <script type="module" src="js/diet-logic.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

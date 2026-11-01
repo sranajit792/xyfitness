@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Diet Plan — XY.FITNESS</title>
+  
+  <!-- CSS Stylesheets -->
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/pages.css">
+  
+  <style>
+    /* Custom spacing and styling grid for meal plans */
+    .diet-split-grid {
+      display: grid;
+      grid-template-columns: 2.2fr 1fr;
+      gap: 2rem;
+    }
+    .meals-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .water-column {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .diet-targets-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+    .target-box {
+      text-align: center;
+      padding: 1.5rem;
+      border-radius: var(--border-radius-md);
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid var(--glass-border);
+    }
+    
+    @media (max-width: 968px) {
+      .diet-split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Ambient waving background -->
+  <div class="ambient-flag-bg"></div>
+  <div class="ambient-particles"></div>
+
+  <div class="app-container">
+    
+    <!-- DESKTOP SIDEBAR NAVIGATION -->
+    <nav class="desktop-nav">
+      <div class="brand-logo">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon">
+        <span>XY.FITNESS</span>
+      </div>
+      <ul class="nav-menu">
+        <li class="nav-item">
+          <a href="dashboard.html">
+            <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+            Dashboard
+          </a>
+        </li>
+      </ul>
+
+      <div class="nav-footer">
+        <button class="btn-logout">Logout</button>
+      </div>
+    </nav>
+
+    <!-- MOBILE TOP BAR -->
+    <header class="mobile-top-bar">
+      <div class="brand-logo">
+        <img src="logo-icon.png" alt="XY.FITNESS Logo Icon">
+        <span>XY.FITNESS</span>
+      </div>
+      <div class="user-avatar" style="width: 32px; height: 32px; font-size: 0.75rem;">-</div>
+    </header>
+
+    <!-- MOBILE BOTTOM NAVIGATION -->
+    <nav class="mobile-nav">
+      <a href="dashboard.html" class="mobile-nav-item active" style="width: 100%; justify-content: center;">
+        <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v4a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" /></svg>
+        <span>Home</span>
+      </a>
+    </nav>
+
+    <!-- MAIN APP CONTENT -->
+    <main class="main-content" style="padding-top: 1rem;">
+      <div class="container-wide">
+        
+        <!-- Mockup styled Floating Header bar -->
+        <div class="app-header-capsule">
+          <div style="display:flex; align-items:center; gap:0.75rem;">
+            <img src="logo-icon.png" alt="XY.FITNESS Icon" style="height:28px;">
+            <div style="display:flex; flex-direction:column; line-height:1.2;">
+              <div style="display:flex; align-items:center; gap:0.5rem;">
+                <span style="font-weight:800; font-size:1.1rem; color:#fff; letter-spacing:0.02em;">XY.FITNESS</span>
+                <span class="badge-vande-mataram">🇮🇳 JAI HIND • VANDE MATARAM</span>
+              </div>
+              <span style="font-size:0.7rem; color:var(--text-muted); font-weight:700;">Personal Fitness Planner</span>
+            </div>
+          </div>
+          
+          <div style="display:flex; gap:0.75rem;">
+            <button class="btn btn-logout btn-sm" style="font-size:0.75rem;">Sign Out</button>
+          </div>
+        </div>
+        
+        <!-- Header -->
+        <header style="margin-bottom: 2rem;">
+          <h1 style="font-size: 2.25rem;">Nutrition & Diet Plan</h1>
+          <p style="color: var(--text-secondary); margin-top: 0.25rem;">Culturally tailored recipes using high-protein Indian ingredients.</p>
+        </header>
+
+        <!-- Target metrics box widgets -->
+        <div class="diet-targets-card">
+          <div class="glass-card target-box">
+            <h3 style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.25rem; font-weight: 600;">Caloric Energy Target</h3>
+            <div id="diet-target-calories" style="font-size: 2.25rem; font-weight: 800; color: var(--accent-saffron);">2000 kcal</div>
+          </div>
+          <div class="glass-card target-box">
+            <h3 style="font-size: 0.8rem; color: var(--text-muted); text-transform: uppercase; margin-bottom: 0.25rem; font-weight: 600;">Daily Hydration Target</h3>
+            <div id="diet-target-water" style="font-size: 2.25rem; font-weight: 800; color: var(--accent-green);">3.2 Liters</div>
+          </div>
+        </div>
+
+        <!-- Master Columns Grid -->
+        <div class="diet-split-grid">
+          <!-- Left Column (Meals List) -->
+          <div class="meals-column">
+            <div class="glass-card" id="meal-breakfast-card">
+              <!-- Injected dynamically -->
+            </div>
+            <div class="glass-card" id="meal-snack1-card">
+              <!-- Injected dynamically -->
+            </div>
+            <div class="glass-card" id="meal-lunch-card">
+              <!-- Injected dynamically -->
+            </div>
+            <div class="glass-card" id="meal-snack2-card">
+              <!-- Injected dynamically -->
+            </div>
+            <div class="glass-card" id="meal-dinner-card">
+              <!-- Injected dynamically -->
+            </div>
+          </div>
+
+          <!-- Right Column (Hydration Tracker & General Guidelines) -->
+          <div class="water-column">
+            
+            <!-- Hydration card widget tracker -->
+            <div class="glass-card">
+              <h2 style="font-size: 1.25rem; margin-bottom: 0.25rem;">Hydration Tracker</h2>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 1.5rem;">Click cups to log water (approx. 250ml per cup)</p>
+              
+              <div id="hydration-cups-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;">
+                <!-- Water cups injected dynamically -->
+              </div>
+            </div>
+
+            <!-- Indian food glossary metrics reference -->
+            <div class="glass-card">
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--white);">Indian Protein Glossary</h3>
+              <p style="font-size: 0.8rem; color: var(--text-secondary); margin-bottom: 0.75rem; line-height: 1.4;">
+                Include these ingredients in your meals to hit daily targets easily:
+              </p>
+              <ul style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                <li><strong>Paneer (100g)</strong>: ~18g Protein</li>
+                <li><strong>Soya Chunks (50g)</strong>: ~26g Protein</li>
+                <li><strong>Moong Dal (1 cup)</strong>: ~12g Protein</li>
+                <li><strong>Eggs (2 whole)</strong>: ~13g Protein</li>
+                <li><strong>Chicken Breast (150g)</strong>: ~40g Protein</li>
+              </ul>
+            </div>
+
+            <!-- Optional Supplements card -->
+            <div class="glass-card" id="supplements-card" style="margin-top: 1.25rem;">
+              <h3 style="font-size: 1.1rem; margin-bottom: 0.5rem; color: var(--white);">Optional Supplements</h3>
+              <ul id="diet-supplements-list" style="font-size: 0.8rem; color: var(--text-secondary); padding-left: 1.25rem; display: flex; flex-direction: column; gap: 0.4rem;">
+                <!-- Injected dynamically -->
+              </ul>
+              <p style="font-size: 0.7rem; color: var(--text-muted); margin-top: 0.75rem; line-height: 1.4;">
+                Note: Supplements are strictly optional. A balanced diet of whole foods is completely sufficient to achieve your goals. Never use controlled or unverified substances.
+              </p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Footer -->
+        <footer class="footer-disclaimer">
+          <p>XY.FITNESS provides general fitness and nutrition information for educational purposes. It is not a substitute for professional medical advice, diagnosis, or treatment. Please consult a qualified nutrition professional or physician before starting any extreme diet.</p>
+          <div class="footer-links">
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Contact Support</a>
+          </div>
+          <p>&copy; 2026 XY.FITNESS. All rights reserved.</p>
+        </footer>
+
+      </div>
+    </main>
+
+  </div>
+
+  <!-- Central Config scripts -->
+  <script type="module" src="js/firebase-config.js"></script>
+  <script type="module" src="js/toast.js"></script>
+  <script type="module" src="js/utils.js"></script>
+  <script type="module" src="js/workout-logic.js"></script>
+  <script type="module" src="js/diet-logic.js"></script>
+  <script type="module" src="js/auth.js"></script>
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>
